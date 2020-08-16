@@ -218,6 +218,10 @@ class Cell{
       if(info[1] == 7 || genome.directionOn == 0){
         writeFromMemory(info[2],info[3]);
       }
+    }else if(info[0] == 7){
+      if(info[1] == 7 || genome.directionOn == 0){
+        removeCodons(info[2],info[3]);
+      }
     }
     genome.hurtCodons();
     if (genome.mutateCodons()){
@@ -255,6 +259,23 @@ class Cell{
       writeInwards(start,end);
     }
   }
+  
+  void removeCodons(int start, int end){
+    laserTarget = null;
+    laserCoor.clear();
+    laserT = frameCount;
+    IntList toRemove = new IntList();
+    if(genome.directionOn != 0){
+      for(int pos = start; pos <= end; pos++){
+        int index = loopItInt(genome.performerOn+pos,genome.codons.size());
+        toRemove.append(index);
+        useEnergy();
+      }
+    toRemove.sortReverse();
+    for (int i : toRemove) if (i+1<genome.codons.size()) genome.codons.remove(i);
+    }
+    
+  }
  
  
   public void writeOutwards(){
@@ -273,6 +294,7 @@ class Cell{
       useEnergy();
     }
   }
+  
   public void writeInwards(int start, int end){
     laserTarget = null;
     String[] memoryParts = memory.split("-");

@@ -1,11 +1,11 @@
 static class CodonInfo{
   public static int[][][] cols = {{{0,0,0},{100,0,200},{180,160,10},
   {0,150,0},{200,0,100},{70,70,255},
-  {0,0,220}},
+  {0,0,220}, {255, 255, 0}},
   {{0,0,0},{200,50,50},{100,65,0},{160,80,160},
   {80,180,80},{0,100,100},
   {0,200,200},{140,140,140},{90,90,90},{90,90,90}}};
-  static String[][] names = {{"none","digest","remove","repair","move hand","read","write"},
+  static String[][] names = {{"none","digest","remove","repair","move hand","read","write", "remove"},
   {"none","food","waste","wall","weak loc","inward","outward","RGL","- RGL start +","- RGL end +"}};
   public static int[] getColor(int p, int t){
     return CodonInfo.cols[p][t];

@@ -116,7 +116,7 @@ class Genome{
         int codonId = (int) random(0, 4);
         switch(codonId){
         case 0:
-            c.setInfo(codonId, (int) random(0, 7));
+            c.setInfo(codonId, (int) random(0, 8));
             break;
         case 1:
             c.setInfo(codonId, (int) random(0, 8));
@@ -133,6 +133,13 @@ class Genome{
   }
   return mutated;
   }
+  
+  void removeCodons(){
+    
+    
+    
+  }
+  
   int getWeakestCodon(){
     double record = 9999;
     int holder = -1;
