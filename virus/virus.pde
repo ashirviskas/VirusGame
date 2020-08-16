@@ -1,11 +1,11 @@
 int WORLD_SIZE = 12;
-int W_W = 1728;
-int W_H = 972;
+int W_W = 1920;
+int W_H = 1080;
 Cell[][] cells = new Cell[WORLD_SIZE][WORLD_SIZE];
 ArrayList<ArrayList<Particle>> particles = new ArrayList<ArrayList<Particle>>(0);
 int foodLimit = 180;
 float BIG_FACTOR = 100;
-float PLAY_SPEED = 0.6;
+float PLAY_SPEED = 10.6;
 double GENE_TICK_TIME = 40.0;
 double margin = 4;
 int START_LIVING_COUNT = 0;
@@ -16,8 +16,9 @@ double removeWasteTimer = 1.0;
 
 double GENE_TICK_ENERGY = 0.014;
 double WALL_DAMAGE = 0.01;
-double CODON_DEGRADE_SPEED = 0.008;
+double CODON_DEGRADE_SPEED = 0.001;
 double EPS = 0.00000001;
+float MUTATE_CHANCE = 0.0001;
 
 String starterGenome = "46-11-22-33-11-22-33-45-44-57__-67__";
 boolean canDrag = false;
@@ -34,7 +35,7 @@ int lastEditTimeStamp = 0;
 color handColor = color(0,128,0);
 color TELOMERE_COLOR = color(0,0,0);
 color WASTE_COLOR = color(100,65,0);
-int MAX_CODON_COUNT = 20; // If a cell were to have more codons in its DNA than this number if it were to absorb a cirus particle, it won't absorb it.
+int MAX_CODON_COUNT = 60; // If a cell were to have more codons in its DNA than this number if it were to absorb a cirus particle, it won't absorb it.
 
 double SPEED_LOW = 0.01;
 double SPEED_HIGH = 0.02;
@@ -58,7 +59,7 @@ void setup(){
       }
     }
   }
-  size(1728,972);
+  size(1920,1080);
   noSmooth();
   UGOcell = new Cell(-1,-1,2,0,1,"00-00-00-00-00");
 }
@@ -131,7 +132,12 @@ void doParticleCountControl(){
   }
   
   ArrayList<Particle> wastes = particles.get(1);
+
   if(wastes.size() > foodLimit){
+    wastes.get(0).removeParticle();
+    wastes.get(0).removeParticle();
+    wastes.get(0).removeParticle();
+    wastes.get(0).removeParticle();
     removeWasteTimer -= (wastes.size()-foodLimit)*REMOVE_WASTE_SPEED_MULTI;
     if(removeWasteTimer < 0){
       int choiceIndex = -1;

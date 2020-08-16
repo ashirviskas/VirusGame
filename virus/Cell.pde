@@ -2,6 +2,7 @@ class Cell{
   int x;
   int y;
   int type;
+  int ogType;
   double wallHealth;
   Genome genome;
   double geneTimer = 0;
@@ -31,6 +32,7 @@ class Cell{
     x = ex;
     y = ey;
     type = et;
+    ogType = et;
     dire = ed;
     wallHealth = ewh;
     genome = new Genome(eg,false);
@@ -71,6 +73,28 @@ class Cell{
       genome.drawCodons();
       genome.drawHand();
       popMatrix();
+    } else if(type == 0){
+     if (ogType == 2)
+     {
+       if (random(10) < 0.01)
+       {
+         if(tampered){
+      tampered = false;
+      cellCounts[0]++;
+      cellCounts[1]--;
+    }
+        dire = 0;
+        type = 2;
+        cellCounts[0]++;
+        cellCounts[2]--;
+        wallHealth = 1;
+        genome = new Genome(starterGenome,false);
+        genome.rotateOn = (int)(Math.random()*genome.codons.size());
+        geneTimer = Math.random()*GENE_TICK_TIME;
+        energy = 0.5;
+        
+       }
+     }
     }
     popMatrix();
     if(type == 2){
@@ -160,6 +184,7 @@ class Cell{
   }
   public void doAction(){
     useEnergy();
+    
     Codon thisCodon = genome.codons.get(genome.rotateOn);
     int[] info = thisCodon.codonInfo;
     if(info[0] == 1 && genome.directionOn == 0){
@@ -209,6 +234,7 @@ class Cell{
       }
     }
     genome.hurtCodons();
+    genome.mutateCodons();
   }
   void useEnergy(){
     energy = Math.max(0,energy-GENE_TICK_ENERGY);
@@ -241,6 +267,8 @@ class Cell{
       writeInwards(start,end);
     }
   }
+ 
+ 
   public void writeOutwards(){
     double theta = Math.random()*2*Math.PI;
     double ugo_vx = Math.cos(theta);
