@@ -108,7 +108,8 @@ class Genome{
       }
     }
   }
-  void mutateCodons(){
+  boolean mutateCodons(){
+    boolean mutated = false;
     for(int i = 0; i < codons.size(); i++){
       Codon c = codons.get(i);
       if(random(1/MUTATE_CHANCE) < 1){
@@ -127,8 +128,10 @@ class Genome{
           c.setInfo(codonId, (int) random(-30, 30));
             break;
       }
+      mutated = true;
     }
   }
+  return mutated;
   }
   int getWeakestCodon(){
     double record = 9999;

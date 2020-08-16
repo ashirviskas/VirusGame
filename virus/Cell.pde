@@ -220,7 +220,9 @@ class Cell{
       }
     }
     genome.hurtCodons();
-    genome.mutateCodons();
+    if (genome.mutateCodons()){
+     tamper(); 
+    }
   }
   void useEnergy(){
     energy = Math.max(0,energy-GENE_TICK_ENERGY);
