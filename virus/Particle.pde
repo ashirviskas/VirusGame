@@ -81,7 +81,9 @@ class Particle{
     
     for(int i = 0; i < toInject.size(); i++){
       int[] info = toInject.get(i).codonInfo;
-      c.genome.codons.add(injectionLocation+i,new Codon(info,1.0));
+      if (injectionLocation+i < c.genome.codons.size()){
+        c.genome.codons.add(injectionLocation+i,new Codon(info,1.0));
+      }
     }
     if(c.genome.performerOn >= c.genome.rotateOn){
       c.genome.performerOn += INJECT_SIZE;

@@ -170,7 +170,9 @@ class Cell{
   }
   public void doAction(){
     useEnergy();
-    
+        if (genome.mutateCodons()){
+     tamper(); 
+    }
     Codon thisCodon = genome.codons.get(genome.rotateOn);
     int[] info = thisCodon.codonInfo;
     if(info[0] == 1 && genome.directionOn == 0){
@@ -224,9 +226,6 @@ class Cell{
       }
     }
     genome.hurtCodons();
-    if (genome.mutateCodons()){
-     tamper(); 
-    }
   }
   void useEnergy(){
     energy = Math.max(0,energy-GENE_TICK_ENERGY);
@@ -357,9 +356,9 @@ class Cell{
   }
   public void pushOut(Particle waste){
     int[][] dire = {{0,1},{0,-1},{1,0},{-1,0}};
-    int chosen = -1;
+    int chosen = -1; //<>//
     while(chosen == -1 || cells[y+dire[chosen][1]][x+dire[chosen][0]].type != 0){
-      chosen = (int)random(0,4);
+      chosen = (int)random(0,4); //<>//
     }
     double[] oldCoor = waste.copyCoor();
     for(int dim = 0; dim < 2; dim++){
