@@ -78,20 +78,7 @@ class Cell{
      {
        if (random(10) < RESPAWN_CHANCE)
        {
-         if(tampered){
-      tampered = false;
-      cellCounts[0]++;
-    }
-        dire = 0;
-        type = 2;
-        cellCounts[0]++;
-        cellCounts[2]--;
-        wallHealth = 1;
-        genome = new Genome(starterGenome,false);
-        genome.rotateOn = (int)(Math.random()*genome.codons.size());
-        geneTimer = Math.random()*GENE_TICK_TIME;
-        energy = 0.5;
-        
+        revive();
        }
      }
     }
@@ -386,6 +373,21 @@ class Cell{
       cellCounts[0]--;
       cellCounts[1]++;
     }
+  }
+  public void revive(){
+             if(tampered){
+      tampered = false;
+      cellCounts[0]++;
+    }
+        dire = 0;
+        type = 2;
+        cellCounts[0]++;
+        cellCounts[2]--;
+        wallHealth = 1;
+        genome = new Genome(starterGenome,false);
+        genome.rotateOn = (int)(Math.random()*genome.codons.size());
+        geneTimer = Math.random()*GENE_TICK_TIME;
+        energy = 0.5;
   }
   public void die(){
     for(int i = 0; i < genome.codons.size(); i++){
