@@ -40,5 +40,5 @@ Codons can be of 2 types:
 | 4  | MOVE HAND | WEAK LOC |
 | 5  | READ | INWARD |
 | 6  | WRITE | OUTWARD |
-| 7  | Remove | RGL |
+| 7  | SURGERY | RGL |
 

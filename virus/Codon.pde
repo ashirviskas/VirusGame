@@ -22,8 +22,10 @@ class Codon{
       codonHealth -= Math.random()*CODON_DEGRADE_SPEED;
       if(codonHealth <= 0){
         codonHealth = 1;
-        codonInfo[0] = 0;
-        codonInfo[1] = 0;
+         setInfo(0, (int) random(0, 8));
+         setInfo(1, (int) random(0, 8));
+         setInfo(2, (int) random(-30, 30));
+         setInfo(3, (int) random(-30, 30));
       }
     }
   }

@@ -16,10 +16,10 @@ double removeWasteTimer = 1.0;
 
 double GENE_TICK_ENERGY = 0.014;
 double WALL_DAMAGE = 0.01;
-double CODON_DEGRADE_SPEED = 0.001;
+double CODON_DEGRADE_SPEED = 0.01;
 double EPS = 0.00000001;
 
-float MUTATE_CHANCE = 0.00001;
+float MUTATE_CHANCE = 0.0001;
 float RESPAWN_CHANCE = 0.01;
 
 
