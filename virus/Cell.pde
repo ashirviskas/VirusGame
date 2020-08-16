@@ -81,7 +81,6 @@ class Cell{
          if(tampered){
       tampered = false;
       cellCounts[0]++;
-      cellCounts[1]--;
     }
         dire = 0;
         type = 2;
