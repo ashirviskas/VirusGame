@@ -19,6 +19,8 @@ double WALL_DAMAGE = 0.01;
 double CODON_DEGRADE_SPEED = 0.001;
 double EPS = 0.00000001;
 float MUTATE_CHANCE = 0.0001;
+float RESPAWN_CHANCE = 0.01;
+
 
 String starterGenome = "46-11-22-33-11-22-33-45-44-57__-67__";
 boolean canDrag = false;
@@ -35,7 +37,7 @@ int lastEditTimeStamp = 0;
 color handColor = color(0,128,0);
 color TELOMERE_COLOR = color(0,0,0);
 color WASTE_COLOR = color(100,65,0);
-int MAX_CODON_COUNT = 60; // If a cell were to have more codons in its DNA than this number if it were to absorb a cirus particle, it won't absorb it.
+int MAX_CODON_COUNT = 160; // If a cell were to have more codons in its DNA than this number if it were to absorb a cirus particle, it won't absorb it.
 
 double SPEED_LOW = 0.01;
 double SPEED_HIGH = 0.02;

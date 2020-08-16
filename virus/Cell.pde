@@ -76,7 +76,7 @@ class Cell{
     } else if(type == 0){
      if (ogType == 2)
      {
-       if (random(10) < 0.01)
+       if (random(10) < RESPAWN_CHANCE)
        {
          if(tampered){
       tampered = false;
